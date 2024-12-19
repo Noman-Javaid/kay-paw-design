@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Sidebar from './Pages/Sidebar';
-import Dashboard from './Pages/Dashboard';
-import PostListing from './Pages/PostListing';
-import MyProperties from './Pages/MyProperties';
-import SavedHomes from './Pages/SavedHomes';
-import ManageTours from './Pages/ManageTours';
-import Profile from './Pages/Profile';
+import Sidebar from './Pages/dashboard/Sidebar';
+import Dashboard from './Pages/dashboard/Dashboard';
+import PostListing from './Pages/dashboard/PostListing';
+import MyProperties from './Pages/dashboard/MyProperties';
+import SavedHomes from './Pages/dashboard/SavedHomes';
+import ManageTours from './Pages/dashboard/ManageTours';
+import Profile from './Pages/dashboard/Profile';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');

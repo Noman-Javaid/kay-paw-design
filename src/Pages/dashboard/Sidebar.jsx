@@ -13,7 +13,7 @@ const Sidebar = ({ setPage, activePage }) => {
               onClick={() => setPage('dashboard')}
               className={`flex items-center w-full text-left p-2 rounded ${activePage === 'dashboard' ? 'bg-darkBlue bg-opacity-10 text-darkBlue' : 'text-neutral-3'} hover:bg-blue-50`}
             >
-              <i className="fa-solid fa-grip fa-lg mr-2"></i> Dashboard
+              <img src={activePage === 'dashboard' ? "/activeDash.svg" : "/dashboard.svg"} className='w-4 h-auto mr-2 mb-1' />Dashboard
             </button>
           </li>
           <li className="mb-4">

@@ -1,57 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 
-const Dashboard = () => {
+const ManageTours = () => {
+  const [statusFilter, setStatusFilter] = useState("Upcoming Tours");
 
   return (
     <div>
-      <Header pageName={"Dashboard"} />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
-        <div className="px-4 rounded-lg border border-neutral-5 shadow-sm py-6 flex items-center">
-          <div className="bg-darkBlue bg-opacity-5 text-darkBlue rounded-full p-3 mr-4">
-            <img src="/myProperties.svg" className='w-6 h-6 text-darkBlue' />
-          </div>
-          <div>
-            <div className="text-darkBlue text-2xl font-semibold">14</div>
-            <div>Active Listing</div>
-          </div>
-        </div>
-        <div className="px-4 rounded-lg border border-neutral-5 shadow-sm py-6 flex items-center">
-          <div className="bg-darkBlue bg-opacity-5 rounded-full p-3 mr-4">
-            <i className="fas fa-home fa-xl text-darkBlue"></i>
-          </div>
-          <div>
-            <div className="text-darkBlue text-2xl font-semibold">09</div>
-            <div>For Sale</div>
-          </div>
-        </div>
-        <div className="px-4 rounded-lg border border-neutral-5 shadow-sm py-6 flex items-center">
-          <div className="bg-darkBlue bg-opacity-5 rounded-full p-3 mr-4">
-            <i className="fas fa-home fa-xl text-darkBlue"></i>
-          </div>
-          <div>
-            <div className="text-darkBlue text-2xl font-semibold">05</div>
-            <div>For Rent</div>
-          </div>
-        </div>
-        <div className="px-4 rounded-lg border border-neutral-5 shadow-sm py-6 flex items-center">
-          <div className="bg-darkBlue bg-opacity-5 rounded-full p-3 mr-4">
-            <i className="fas fa-home fa-xl text-darkBlue"></i>
-          </div>
-          <div>
-            <div className="text-darkBlue text-2xl font-semibold">02</div>
-            <div>Pending</div>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white rounded">
+      <Header pageName={"Manage Tours"} />
+      <div className="bg-white rounded mt-8">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">All Listing</h2>
+          <div className="flex border-b w-64">
+            <button
+              onClick={() => setStatusFilter("Upcoming Tours")}
+              className={`flex-1 px-3 py-1 text-sm ${statusFilter === "Upcoming Tours"
+                ? "border-b-2 border-neutral text-neutral"
+                : "text-neutral-3"
+                } focus:outline-none`}
+            >
+              Upcoming Tours
+            </button>
+            <button
+              onClick={() => setStatusFilter("Past Tours")}
+              className={`flex-1 px-3 py-1 text-sm ${statusFilter === "Past Tours"
+                ? "border-b-2 border-neutral text-neutral"
+                : "text-neutral-3"
+                } focus:outline-none`}
+            >
+              Past Tours
+            </button>
+          </div>
           <div className="flex items-center">
-            <div className='border rounded-full p-1 space-x-4 mr-6'>
-              <button className="px-5 py-1 bg-darkBlue text-white rounded-full">All</button>
-              <button className="px-4 py-1 rounded-full">For Sale</button>
-              <button className="px-4 py-1 rounded-full">For Rent</button>
+            <div className='border rounded-full p-1 space-x-2 mr-6'>
+              <button className="px-4 py-1 focus:bg-darkBlue focus:text-white rounded-full">My Tours</button>
+              <button className="px-4 py-1 focus:bg-darkBlue focus:text-white rounded-full">Requests</button>
             </div>
             <div className="flex items-center space-x-2">
               <span>Sort by:</span>
@@ -101,7 +82,7 @@ const Dashboard = () => {
                 <div className="font-bold text-sm">1,240</div>
               </div>
               <div className="flex items-center justify-center">
-                <span className="px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-700">Active</span>
+                <span className="px-3 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-700">Confirmed</span>
               </div>
               <div>
                 <i className="fas fa-ellipsis-h ml-4 text-gray-500"></i>
@@ -111,7 +92,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default ManageTours;
