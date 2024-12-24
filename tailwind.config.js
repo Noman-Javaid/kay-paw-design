@@ -11,6 +11,7 @@ export default {
       },
       colors: {
         'darkBlue': '#008DDA',
+        'carousel': '#30B6FF1A',
         'alert-2': '#15803D',
         'neutral': '#1F1F1F',
         'neutral-2': '#545454',

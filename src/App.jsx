@@ -7,24 +7,28 @@ import MyProperties from './Pages/dashboard/MyProperties';
 import SavedHomes from './Pages/dashboard/SavedHomes';
 import ManageTours from './Pages/dashboard/ManageTours';
 import Profile from './Pages/dashboard/Profile';
+import LandingPage from './Pages/landingPage/LandingPage';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
 
   return (
-    <div className="flex min-h-screen">
-      <div>
-        <Sidebar setPage={setPage} activePage={page} />
-      </div>
-      <div className="flex-grow p-4">
-        {page === 'dashboard' && <Dashboard />}
-        {page === 'postListing' && <PostListing />}
-        {page === 'myProperties' && <MyProperties />}
-        {page === 'savedHomes' && <SavedHomes />}
-        {page === 'manageTours' && <ManageTours />}
-        {page === 'profile' && <Profile />}
-      </div>
-    </div>
+    <>
+      <LandingPage />
+    </>
+    // <div className="flex min-h-screen">
+    //   <div>
+    //     <Sidebar setPage={setPage} activePage={page} />
+    //   </div>
+    //   <div className="flex-grow p-4">
+    //     {page === 'dashboard' && <Dashboard />}
+    //     {page === 'postListing' && <PostListing />}
+    //     {page === 'myProperties' && <MyProperties />}
+    //     {page === 'savedHomes' && <SavedHomes />}
+    //     {page === 'manageTours' && <ManageTours />}
+    //     {page === 'profile' && <Profile />}
+    //   </div>
+    // </div>
   );
 };
 

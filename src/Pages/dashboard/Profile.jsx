@@ -62,20 +62,20 @@ const Profile = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
                 <label className="block text-neutral font-semibold">Name</label>
-                <input type="text" name="name" value={profile.name} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg" />
+                <input type="text" name="name" value={profile.name} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg outline-none" />
               </div>
               <div>
                 <label className="block text-neutral font-semibold">Surname</label>
-                <input type="text" name="surname" value={profile.surname} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg" />
+                <input type="text" name="surname" value={profile.surname} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg outline-none" />
               </div>
               <div>
                 <label className="block text-neutral font-semibold">Email</label>
-                <input type="email" name="email" value={profile.email} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg" />
+                <input type="email" name="email" value={profile.email} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg outline-none" />
               </div>
               <div>
                 <label className="block text-neutral font-semibold">Password</label>
                 <div className="relative">
-                  <input type={showPassword ? "text" : "password"} name="password" value={profile.password} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg pr-16" />
+                  <input type={showPassword ? "text" : "password"} name="password" value={profile.password} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg outline-none pr-16" />
                   <button type="button" onClick={togglePassword} className="absolute right-4 top-5">
                     {showPassword ? "Hide" : "Show"}
                   </button>
@@ -83,7 +83,7 @@ const Profile = () => {
               </div>
               <div>
                 <label className="block text-neutral font-semibold">Phone</label>
-                <input type="text" name="phone" value={profile.phone} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg" />
+                <input type="text" name="phone" value={profile.phone} onChange={handleChange} className="w-full mt-2 py-3 px-4 border border-neutral-5 rounded-lg outline-none" />
               </div>
             </div>
           </div>
