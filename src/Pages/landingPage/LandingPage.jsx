@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const images = [
   { id: 1, url: 'https://via.placeholder.com/100x300/FF5733/FFFFFF?text=Image+1', title: 'Residential', discription: '2 Listing' },
@@ -26,7 +28,6 @@ const cities = [
   { name: "Houston, TX", img: "https://placehold.co/300x300?text=Houston" },
 ];
 
-
 const BlogCard = ({ date, imageUrl, title, description }) => (
   <div className="rounded-lg overflow-hidden">
     <div className='relative'>
@@ -40,25 +41,60 @@ const BlogCard = ({ date, imageUrl, title, description }) => (
   </div>
 );
 
+const testimonials = [
+  {
+    name: 'Mika Gilmore',
+    date: '12 June, 2024',
+    text: 'The WP Estate team did an outstanding job helping me buy and create my first real estate website.',
+    stars: 5,
+    imageUrl: 'https://placehold.co/50x50',
+  },
+  {
+    name: 'John Doe',
+    date: '15 June, 2024',
+    text: 'A fantastic experience! I now have a professional real estate website that I can proudly show my clients.',
+    stars: 4,
+    imageUrl: 'https://placehold.co/50x50',
+  },
+  {
+    name: 'Sara Lee',
+    date: '18 June, 2024',
+    text: 'Amazing support and great results! The team helped me every step of the way.',
+    stars: 5,
+    imageUrl: 'https://placehold.co/50x50',
+  },
+];
+
+const ArrowButtons = ({ carouselRef }) => {
+  return (
+    <div className="flex gap-4">
+      <button onClick={() => carouselRef.current.previous()} aria-label="Previous Slide" className="border border-black px-4 py-2 rounded-full">
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button onClick={() => carouselRef.current.next()} aria-label="Next Slide" className="border border-black px-4 py-2 rounded-full">
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+  )
+}
 
 const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null)
 
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4.5
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
   };
 
   const homes = [
@@ -270,14 +306,14 @@ const LandingPage = () => {
                 <img src={home.image} alt={`House ${home.id}`} className="w-full h-auto rounded-2xl object-fill" />
                 <div className="absolute top-4 left-4 bg-white text-black px-3 py-1 rounded-full text-sm">{home.status}</div>
                 <div className="absolute top-4 right-4 bg-transparent text-white rounded-full">
-                  {home.isFavorite ? <img src="/heart.svg" className="w-6" /> : <i class="fa-solid fa-heart fa-xl"></i>}
+                  {home.isFavorite ? <img src="/heart.svg" className="w-6" /> : <i className="fa-solid fa-heart fa-xl"></i>}
                 </div>
               </div>
               <div className="py-2">
                 <div className="text-xl font-semibold">{home.price}</div>
                 <div className="text-neutral">{home.details}</div>
                 <div className="text-neutral flex items-center">
-                  <i class="fa-solid fa-location-dot mr-1"></i>
+                  <i className="fa-solid fa-location-dot mr-1"></i>
                   {home.address}
                 </div>
               </div>
@@ -288,40 +324,39 @@ const LandingPage = () => {
           <button className='border border-black py-2 px-8 rounded-full'>See All Listings</button>
         </div>
 
-        <div className="relative bg-carousel py-20 px-32">
+        <div className="relative bg-carousel py-20 px-8 sm:px-16 md:px-24 lg:px-32">
           <div className="flex items-center pb-8">
-            <h2 className="flex-1 text-center text-5xl font-bold text-black">
+            <h2 className="flex-1 text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black">
               EXPLORE PROPERTIES TO
               <span className="text-darkBlue"> BUY </span>
               OR
               <span className="text-darkBlue"> RENT</span>
             </h2>
-            <div className="flex items-center gap-4">
-              <button onClick={prevSlide} aria-label="Previous Slide" className="border-2 border-black px-4 py-2 rounded-full">
-                <i class="fa-solid fa-angle-left"></i>
-              </button>
-              <button onClick={nextSlide} aria-label="Next Slide" className="border-2 border-black px-4 py-2 rounded-full">
-                <i class="fa-solid fa-angle-right"></i>
-              </button>
+            <div className="hidden sm:flex gap-4">
+              <ArrowButtons carouselRef={carouselRef} />
             </div>
           </div>
-          <div className="relative">
-            <div className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${(currentIndex * 100) / images.length}%)`,
-              }}
-            >
-              {images.map((image) => (
-                <div key={image.id} className='sm:w-3/4 md:w-1/2 lg:w-1/3'>
-                  <img src={image.url} alt={`Slide ${image.id}`} className="w-72 h-96 object-cover rounded-2xl" />
-                  <div className='space-y-1'>
-                    <h3 className='font-semibold text-lg mt-2'>{image.title}</h3>
-                    <p className='text-sm text-neutral'>{image.discription}</p>
-                  </div>
+          <Carousel
+            responsive={responsive}
+            keyBoardControl={true}
+            infinite={true}
+            arrows={false}
+            renderButtonGroupOutside={true}
+            ref={carouselRef}
+            autoPlay={true}
+            autoPlaySpeed={2000}
+            centerMode={true}
+          >
+            {images.map((image) => (
+              <div key={image.id} className='m-2'>
+                <img src={image.url} alt={`Slide ${image.id}`} className="w-72 h-96 object-cover rounded-2xl" />
+                <div className='space-y-1'>
+                  <h3 className='font-semibold text-lg mt-2'>{image.title}</h3>
+                  <p className='text-sm text-neutral'>{image.discription}</p>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            ))}
+          </Carousel>
         </div>
 
         <div className="py-20 px-8 sm:px-16 md:px-24 lg:px-32">
@@ -338,74 +373,44 @@ const LandingPage = () => {
         </div>
 
         <div className="bg-neutral py-20 px-8 sm:px-16 md:px-24 lg:px-32">
-          <div className="flex justify-center sm:justify-end gap-4 pb-6">
-            <button onClick={prevSlide} aria-label="Previous Slide" className="border border-white text-white px-4 py-2 rounded-full">
+          {/* <div className="hidden  sm:flex justify-center sm:justify-end gap-4 pb-6">
+            <button aria-label="Previous Slide" className="border border-white text-white px-4 py-2 rounded-full">
               <i className="fa-solid fa-angle-left"></i>
             </button>
-            <button onClick={nextSlide} aria-label="Next Slide" className="border border-white text-white px-4 py-2 rounded-full">
+            <button aria-label="Next Slide" className="border border-white text-white px-4 py-2 rounded-full">
               <i className="fa-solid fa-angle-right"></i>
             </button>
-          </div>
-          <div className="flex flex-col lg:flex-row justify-between items-center pb-14">
+          </div> */}
+          <div className="flex flex-wrap lg:flex-row justify-between items-center">
             <div className="max-w-full sm:max-w-md md:max-w-lg text-center sm:text-left">
-              <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">What Our Clients Say About Maison</h2>
+              <h2 className="text-xl sm:text-2xl font-semibold text-white mb-4">What Our Clients Say About Maison</h2>
               <p className="text-sm sm:text-lg text-neutral-6 mb-6">
                 Founded in 2012, Maison is your trusted real estate marketplace, connecting buyers, sellers, and renters with their dream properties seamlessly.
               </p>
-              <button className="px-8 py-2 border border-white text-white rounded-full">About us</button>
+              <button className="px-8 py-2 border border-white text-white rounded-full mb-6">About us</button>
             </div>
             <div className="flex flex-wrap justify-center lg:justify-end gap-6 lg:gap-8">
-              <div className="bg-white rounded-lg p-6 shadow-lg max-w-xs w-full sm:w-80">
-                <div className="flex items-center mb-4">
-                  <img src="https://placehold.co/50x50" alt="Client photo" className="w-10 h-10 rounded-full mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Mika Gilmore</h3>
-                    <p className="text-sm text-neutral-2">12 June, 2024</p>
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="bg-white rounded-lg p-6 shadow-lg max-w-xs w-full">
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={testimonial.imageUrl}
+                      alt={`Client photo of ${testimonial.name}`}
+                      className="w-10 h-10 rounded-full mr-4"
+                    />
+                    <div>
+                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <p className="text-sm text-neutral-2">{testimonial.date}</p>
+                    </div>
+                  </div>
+                  <p className="mb-4 text-neutral-2 text-sm">{testimonial.text}</p>
+                  <div className="text-yellow-500">
+                    {[...Array(testimonial.stars)].map((_, i) => (
+                      <i key={i} className="fas fa-star"></i>
+                    ))}
                   </div>
                 </div>
-                <p className="mb-4 text-neutral-2 text-sm">The WP Estate team did an outstanding job helping me buy and create my first real estate website.</p>
-                <div className="text-yellow-500">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-6 shadow-lg max-w-xs w-full sm:w-80">
-                <div className="flex items-center mb-4">
-                  <img src="https://placehold.co/50x50" alt="Client photo" className="w-10 h-10 rounded-full mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Mika Gilmore</h3>
-                    <p className="text-sm text-neutral-2">12 June, 2024</p>
-                  </div>
-                </div>
-                <p className="mb-4 text-neutral-2 text-sm">The WP Estate team did an outstanding job helping me buy and create my first real estate website.</p>
-                <div className="text-yellow-500">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg p-6 shadow-lg max-w-xs w-full sm:w-80">
-                <div className="flex items-center mb-4">
-                  <img src="https://placehold.co/50x50" alt="Client photo" className="w-10 h-10 rounded-full mr-4" />
-                  <div>
-                    <h3 className="font-semibold">Mika Gilmore</h3>
-                    <p className="text-sm text-neutral-2">12 June, 2024</p>
-                  </div>
-                </div>
-                <p className="mb-4 text-neutral-2 text-sm">The WP Estate team did an outstanding job helping me buy and create my first real estate website.</p>
-                <div className="text-yellow-500">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
