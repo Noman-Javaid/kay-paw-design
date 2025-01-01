@@ -121,6 +121,7 @@ const MapPage = () => {
     homeType: false,
     more: false,
   });
+  const [showFilters, setShowFilters] = useState(false);
 
   const handleSelect = (name) => () => {
     setFilters(() => {
@@ -190,11 +191,17 @@ const MapPage = () => {
         <div>
           <div className="flex flex-col-reverse sm:flex-row justify-between items-center border-b border-neutral-6 space-x-4 py-4 px-8 md:px-16">
             <div className='flex flex-wrap w-full'>
-              <div className="relative border border-neutral-5 rounded-full w-full sm:max-w-sm mb-2 mr-0 sm:mr-2 lg:mb-0">
-                <input type="text" placeholder="Streetsboro Middle School, Streets..." className="w-72 sm:w-80 block px-4 2xl:px-6 2xl:py-3 py-2 border-none focus:outline-none rounded-full" />
-                <button className="absolute right-1 bottom-1 px-2 py-1 2xl:px-3 2xl:py-2 bg-darkBlue text-white rounded-full"><i className="fas fa-search"></i></button>
+              <div className={`flex justify-between items-center w-full sm:max-w-sm ${showFilters ? "mb-2" : ""} sm:mb-2 xl:mb-0 mr-0 sm:mr-2`}>
+                <div className='flex justify-center items-center w-full pr-1 border border-neutral-5 rounded-full mr-2 sm:m-0'>
+                  <input type="text" placeholder="Streetsboro Middle School, Streets..." className='w-full flex px-4 2xl:px-6 2xl:py-3 py-2 rounded-full focus:outline-none' />
+                  <button className='bg-darkBlue text-white rounded-full px-2 py-1 2xl:px-3 2xl:py-2'><i className="fas fa-search" /></button>
+                </div>
+                <button onClick={() => setShowFilters(!showFilters)} className='sm:hidden flex text-neutral-2 w-11 text-4xl'>
+                  <i class="fa-solid fa-filter" />
+                </button>
               </div>
-              <div>
+
+              <div className={`${!showFilters ? "hidden sm:block" : ""}`}>
                 <div className="relative inline-block w-full sm:w-auto mr-2">
                   <div className='flex justify-between items-center border border-neutral-5 rounded-full px-4 2xl:px-6 mb-2 lg:mb-0'>
                     <button onClick={handleSelect("sale_rent")} className='w-full flex 2xl:py-3 py-2'>For Sale</button>
@@ -326,18 +333,18 @@ const MapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex gap-3 border border-neutral rounded-full p-1 mb-4 sm:m-0">
+            <div className="flex items-center gap-3 border border-neutral rounded-full p-1 mb-4 sm:m-0">
               <button className={`px-4 py-1 2xl:py-2 2xl:px-6 ${!showMap ? "bg-darkBlue text-white" : ""} rounded-full`} onClick={() => setShowMap(false)}>List</button>
               <button className={`px-4 py-1 2xl:py-2 2xl:px-6 ${showMap ? "bg-darkBlue text-white" : ""} rounded-full`} onClick={() => setShowMap(true)}>Map</button>
             </div>
           </div>
           <div className="flex flex-wrap-reverse">
             <div className={`w-full ${showMap ? 'lg:w-[46%]' : 'lg:w-full'} py-8 px-6 lg:pl-16 pb-24`}>
-              <div className={` ${!showMap ? "flex justify-between items-center" : ""}`}>
-                <h2 className="text-2xl font-semibold mb-2">Homes for sale near Streetsboro Middle School</h2>
+              <div className={` ${!showMap ? "sm:flex justify-between items-center" : ""}`}>
+                <h2 className="sm:text-xl xl:text-2xl font-semibold mb-2">Homes for sale near Streetsboro Middle School</h2>
                 <div className='flex justify-between gap-5'>
-                  <p className="text-neutral font-medium mb-2">49 results</p>
-                  <p className='text-neutral-3 font-medium'>Sort by
+                  <p className="text-neutral font-medium text-sm mb-2">49 results</p>
+                  <p className='text-neutral-3 font-medium text-sm'>Sort by
                     <select className='bg-white text-neutral focus:outline-none'>
                       <option>Newest listing</option>
                       <option>2</option>
