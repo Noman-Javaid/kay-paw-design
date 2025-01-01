@@ -8,13 +8,15 @@ import SavedHomes from './Pages/dashboard/SavedHomes';
 import ManageTours from './Pages/dashboard/ManageTours';
 import Profile from './Pages/dashboard/Profile';
 import LandingPage from './Pages/landingPage/LandingPage';
+import MapPage from './Pages/MapPage/MapPage';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
 
   return (
     <>
-      <LandingPage />
+      <MapPage />
+      {/* <LandingPage /> */}
     </>
     // <div className="flex min-h-screen">
     //   <div>
