@@ -9,13 +9,15 @@ import ManageTours from './Pages/dashboard/ManageTours';
 import Profile from './Pages/dashboard/Profile';
 import LandingPage from './Pages/landingPage/LandingPage';
 import MapPage from './Pages/MapPage/MapPage';
+import PropertyDetail from './Pages/PropertyDetailPage/PropertyDetail';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
 
   return (
     <>
-      <MapPage />
+      <PropertyDetail />
+      {/* <MapPage /> */}
       {/* <LandingPage /> */}
     </>
     // <div className="flex min-h-screen">
