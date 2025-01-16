@@ -10,13 +10,15 @@ import Profile from './Pages/dashboard/Profile';
 import LandingPage from './Pages/landingPage/LandingPage';
 import MapPage from './Pages/MapPage/MapPage';
 import PropertyDetail from './Pages/PropertyDetailPage/PropertyDetail';
+import Customers from './Pages/Customers/Customers';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
 
   return (
     <>
-      <PropertyDetail />
+      <Customers />
+      {/* <PropertyDetail /> */}
       {/* <MapPage /> */}
       {/* <LandingPage /> */}
     </>

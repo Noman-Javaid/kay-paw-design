@@ -10,6 +10,8 @@ export default {
         pacifico: ['Pacifico', 'cursive'],
       },
       colors: {
+        'alert1': '#DC2626',
+        'alert2': '#2AA54B',
         'darkBlue': '#008DDA',
         'carousel': '#30B6FF1A',
         'footer': '#FBFBFB',
