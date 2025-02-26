@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-//   KAYPAW
+// KAYPAW
 // import Sidebar from './Pages/KaypawDesign/dashboard/Sidebar';
 // import Dashboard from './Pages/KaypawDesign/dashboard/Dashboard';
 // import PostListing from './Pages/KaypawDesign/dashboard/PostListing';
@@ -15,6 +15,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 // import Customers from './Pages/KaypawDesign/Customers/Customers';
 
 // FOLDER FAIRY
+import DashboardLayout from './FolderFairyDesign/Layouts/DashboardLayout';
 
 
 
@@ -50,11 +51,9 @@ const App = () => {
 
 
     // FOLDER FAIRY
-
-    <>
-
-
-    </>
+    <Router>
+      <DashboardLayout />
+    </Router>
   );
 };
 
