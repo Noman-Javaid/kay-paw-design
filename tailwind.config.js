@@ -32,6 +32,7 @@ export default {
         'DarkIndigo': '#343380',
         'LavenderBlue': '#E6EAFF',
         'Gray': '#7A7A7A',
+        'BlueViolet': '#5A57F2'
       },
     },
   },
