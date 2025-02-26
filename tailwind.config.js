@@ -26,13 +26,15 @@ export default {
 
         //FOLDER FAIRY
         'DarkBlue': '#212066',
-        'LightGray': '#E8E8E8',
         'DarkSlateBlue': '#383682',
-        'Independence': '#42417C',
         'DarkIndigo': '#343380',
+        'LightGray': '#E8E8E8',
+        'MediumGray': '#8F8F8F',
+        'Independence': '#42417C',
         'LavenderBlue': '#E6EAFF',
         'Gray': '#7A7A7A',
-        'BlueViolet': '#5A57F2'
+        'BlueViolet': '#5A57F2',
+        'Charcoal': '#303030',
       },
     },
   },

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const DashboardHeader = () => {
   return (
-    <div className="flex justify-between items-center pb-4">
+    <div className="flex justify-between items-center py-8 px-6 bg-white border-b-[1px] border-LavenderBlue">
       <div className='flex flex-col'>
         <div className='flex items-center gap-3'>
           <img className='w-6 h-6' src="/FolderFairy/HeaderIcons/folder.svg" />
