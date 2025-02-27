@@ -25,6 +25,7 @@ export default {
         // 'neutral-6': '#F4F4F4',
 
         //FOLDER FAIRY
+        'AliceBlue': '#F1F3FF',
         'DarkBlue': '#212066',
         'DarkSlateBlue': '#383682',
         'DarkIndigo': '#343380',
