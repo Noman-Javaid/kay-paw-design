@@ -35,7 +35,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </nav>
-      <div className='py-6 px-4 bg-DarkIndigo rounded-lg'>
+      <div className='py-6 px-4 bg-DarkIndigo border border-Lavender border-opacity-20 rounded-lg'>
         <ul>
           <li className="mb-2">
             <Link to="/HelpAndTutorials" className="flex items-center hover:bg-DarkSlateBlue p-2 rounded-md">

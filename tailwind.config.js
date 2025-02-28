@@ -36,6 +36,7 @@ export default {
         'Gray': '#7A7A7A',
         'BlueViolet': '#5A57F2',
         'Charcoal': '#303030',
+        'Lavender': '#DEDDFF',
       },
     },
   },
