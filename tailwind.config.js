@@ -29,6 +29,7 @@ export default {
         'DarkBlue': '#212066',
         'DarkSlateBlue': '#383682',
         'DarkIndigo': '#343380',
+        'DimGray': '#666666',
         'LightGray': '#E8E8E8',
         'MediumGray': '#8F8F8F',
         'Independence': '#42417C',
@@ -37,6 +38,7 @@ export default {
         'BlueViolet': '#5A57F2',
         'Charcoal': '#303030',
         'Lavender': '#DEDDFF',
+        'WhiteSmoke': "#F8F8F8"
       },
     },
   },

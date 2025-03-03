@@ -13,10 +13,10 @@ const links = [
 const Sidebar = () => {
 
   return (
-    <div className="bg-DarkBlue text-white w-72 p-4 flex flex-col overflow-y-auto">
+    <div className="bg-DarkBlue text-white w-72 p-4 flex flex-col overflow-y-auto" style={{fontFamily: "inter"}}>
       <div className="flex items-center pb-4 border-b-[1px] border-LightGray border-opacity-20">
         <img src="/FolderFairy/SidebarIcons/fileFairy.svg" alt="File Fairy logo" className="w-16 h-10 mr-2" />
-        <span className="text-xl font-bold">File Fairy</span>
+        <span className="text-xl font-semibold">File Fairy</span>
       </div>
       <nav className="flex-1 py-4">
         <ul>
