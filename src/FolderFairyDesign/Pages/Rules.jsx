@@ -73,19 +73,22 @@ const Rules = () => {
 
   return (
     <div className='flex flex-col'>
-      <div className='sticky top-0 z-10'>
+      <div className='sticky top-0 z-20'>
         <DashboardHeader />
       </div>
-      <div className="flex flex-col pl-8 pr-8 xl:pr-40 2xl:pr-80 py-12 gap-8">
-        <div className="flex flex-col gap-12">
-          <div className="bg-white p-8 rounded-lg border border-LightGray">
+      <div className="flex flex-col pl-8 pr-8 xl:pr-40 2xl:pr-80 py-12 gap-8" style={{ fontFamily: "inter" }}>
+        <div className="flex flex-col items-center w-full gap-12">
+          <div className="bg-white p-8 rounded-lg border border-LightGray w-full">
             <div className="flex flex-col gap-2">
               <label className="block text-Charcoal text-sm font-bold">Rule Name</label>
               <input type="text" value={ruleName} onChange={(e) => setRuleName(e.target.value)} className="w-full p-4 border border-LightGray rounded-lg focus:outline-none" />
             </div>
           </div>
-
-          <div className="bg-white p-8 rounded-lg border border-LightGray">
+          <div className='-mt-12 -mb-[4.4rem] z-10 flex flex-col items-center'>
+            <div className="h-10 w-px bg-PeriwinkleBlue" />
+            <span className='px-[3.1rem] py-2 bg-LavenderMist border border-PeriwinkleBlue rounded-xl'>If</span>
+          </div>
+          <div className="bg-white p-8 rounded-lg border border-LightGray w-full">
             <div className="flex flex-col gap-2">
               <label className="block text-Charcoal text-sm font-bold">Data Source</label>
               <div className='relative'>
@@ -110,8 +113,11 @@ const Rules = () => {
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col bg-white p-8 rounded-lg border border-LightGray gap-8">
+          <div className='-mt-12 -mb-[4.4rem] z-10 flex flex-col items-center'>
+            <div className="h-10 w-px bg-PeriwinkleBlue" />
+            <span className='px-10 py-2 bg-LavenderMist border border-PeriwinkleBlue rounded-xl'>And</span>
+          </div>
+          <div className="flex flex-col bg-white p-8 rounded-lg border border-LightGray w-full gap-8">
             <div className='flex flex-col gap-2'>
               <label className="block text-Charcoal text-sm font-bold">Refine the rule by adding multiple conditions</label>
               <div className='grid grid-cols-12 items-center gap-2'>
@@ -177,10 +183,13 @@ const Rules = () => {
                 </div>
               </div>
             </div>
-            <button className='flex items-center p-4 border border-LightGray rounded-lg w-40'>+ Add a condition</button>
+            <button className='flex items-center p-4 text-sm border border-LightGray rounded-lg w-[9.5rem]'>+ Add a condition</button>
           </div>
-
-          <div className="bg-white p-8 rounded-lg border border-LightGray">
+          <div className='-mt-12 -mb-[4.4rem] z-10 flex flex-col items-center'>
+            <div className="h-10 w-px bg-PeriwinkleBlue" />
+            <span className='px-9 py-2 bg-LavenderMist border border-PeriwinkleBlue rounded-xl'>Then</span>
+          </div>
+          <div className="bg-white p-8 rounded-lg border border-LightGray w-full">
             <div className="flex gap-12">
               <div className='flex flex-col w-full gap-2'>
                 <label className="block text-gray-700 text-sm font-bold">Take this action once the condition is met</label>

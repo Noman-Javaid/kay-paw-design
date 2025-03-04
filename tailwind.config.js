@@ -34,10 +34,12 @@ export default {
         'MediumGray': '#8F8F8F',
         'Independence': '#42417C',
         'LavenderBlue': '#E6EAFF',
+        'LavenderMist': '#E7E6FF',
         'Gray': '#7A7A7A',
         'BlueViolet': '#5A57F2',
         'Charcoal': '#303030',
         'Lavender': '#DEDDFF',
+        'PeriwinkleBlue': '#C3CCFD',
         'WhiteSmoke': "#F8F8F8"
       },
     },
